@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>About Me — jc's archive</title>
+<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet" />
+<style>
+  body {
+    margin: 0;
+    background: black;
+    color: #7fd1ff; /* blue glowing text */
+    font-family: 'VT323', monospace;
+    overflow-x: hidden;
+  }
+
+  /* Outside heading */
+  #page-title {
+    font-family: 'VT323', monospace;
+    color: #7fd1ff;
+    text-shadow: 0 0 12px #7fd1ff;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-top: 80px;
+    margin-bottom: 20px;
+    user-select: none;
+  }
+
+  #terminal-window {
+    max-width: 600px;
+    margin: 0 auto 80px; /* space below box */
+    padding: 20px 30px;
+    background: black;
+    border: 3px solid #7fd1ff;
+    box-shadow: 0 0 20px #7fd1ff88 inset;
+    border-radius: 8px;
+    position: relative;
+  }
+
+  p {
+    font-size: 1.1rem;
+    line-height: 1.4;
+    white-space: pre-wrap;
+    max-width: 100%;
+    color: #7fd1ff;
+    text-shadow: 0 0 6px #7fd1ff;
+  }
+
+  .social-links {
+    margin-top: 20px;
+    display: flex;
+    gap: 25px;
+  }
+
+  .social-links a {
+    font-size: 1.5rem;
+    text-decoration: none;
+    transition: text-shadow 0.3s ease;
+  }
+
+  /* Instagram link - white */
+  .social-links a.instagram {
+    color: white;
+  }
+
+  .social-links a.instagram:hover {
+    text-shadow: 0 0 10px white;
+  }
+
+  /* Spotify link - green */
+  .social-links a.spotify {
+    color: #1DB954;
+  }
+
+  .social-links a.spotify:hover {
+    text-shadow: 0 0 15px #1DB954;
+  }
+
+  /* Social icons as emojis or SVG inline */
+  .social-links a svg {
+    vertical-align: middle;
+    width: 24px;
+    height: 24px;
+    margin-right: 6px;
+    filter: drop-shadow(0 0 2px currentColor);
+  }
+
+  /* Blinking cursor effect */
+  .typed-text::after {
+    content: "|";
+    animation: blink 1.2s steps(2) infinite;
+  }
+
+  @keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+  }
+
+  /* Transition overlay */
+  #switching-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: black;
+    color: #7fd1ff;
+    font-family: 'VT323', monospace;
+    font-size: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    user-select: none;
+    text-shadow:
+      0 0 10px #7fd1ff,
+      0 0 20px #7fd1ff,
+      0 0 40px #7fd1ff;
+    transition: opacity 0.8s ease;
+    opacity: 1; /* visible on load */
+    pointer-events: auto;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+<div id="switching-overlay">Click to learn about me</div>
+
+<h1 id="page-title" class="typed-text">about me</h1>
+
+<div id="terminal-window">
+  <p>
+    Hey, I'm JC — a lover of retro vibes, tech, and all things digital nostalgia.<br><br>
+    Coding, music, movies — this is my little corner of the internet.<br><br>
+    Feel free to explore and connect!
+  </p>
+  <div class="social-links">
+    <a href="https://open.spotify.com/user/inmortalplayz" target="_blank" rel="noopener noreferrer" class="spotify" aria-label="Spotify">
+      <!-- Cassette tape icon SVG -->
+      <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="3" y="6" width="18" height="12" rx="2" ry="2" stroke="none"/>
+        <circle cx="8" cy="12" r="2" fill="black"/>
+        <circle cx="16" cy="12" r="2" fill="black"/>
+        <rect x="6" y="8" width="12" height="8" fill="none" stroke="currentColor" stroke-width="1" />
+      </svg>
+      Spotify
+    </a>
+    <a href="https://www.instagram.com/yrg.jc/" target="_blank" rel="noopener noreferrer" class="instagram" aria-label="Instagram">
+      📸 Instagram
+    </a>
+  </div>
+</div>
+
+<script>
+  const overlay = document.getElementById('switching-overlay');
+
+  overlay.addEventListener('click', () => {
+    overlay.style.opacity = '0';
+    overlay.style.pointerEvents = 'none';
+    setTimeout(() => {
+      overlay.style.display = 'none';
+    }, 800);
+  });
+</script>
+
+</body>
+</html>
