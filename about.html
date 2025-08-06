@@ -14,7 +14,29 @@
     overflow-x: hidden;
   }
 
-  /* Outside heading */
+  /* Back to home button */
+  #back-home {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: none;
+    border: 2px solid #7fd1ff;
+    color: #7fd1ff;
+    font-family: 'VT323', monospace;
+    font-size: 1.2rem;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    user-select: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    z-index: 10001;
+  }
+  #back-home:hover {
+    background-color: #7fd1ff;
+    color: black;
+  }
+
   #page-title {
     font-family: 'VT323', monospace;
     color: #7fd1ff;
@@ -115,7 +137,7 @@
       0 0 20px #7fd1ff,
       0 0 40px #7fd1ff;
     transition: opacity 0.8s ease;
-    opacity: 1; /* visible on load */
+    opacity: 1; /* starts visible */
     pointer-events: auto;
     cursor: pointer;
   }
@@ -124,6 +146,8 @@
 <body>
 
 <div id="switching-overlay">Click to learn about me</div>
+
+<a href="#" id="back-home" aria-label="Back to homepage">← Back to homepage</a>
 
 <h1 id="page-title" class="typed-text">about me</h1>
 
@@ -152,13 +176,27 @@
 
 <script>
   const overlay = document.getElementById('switching-overlay');
+  const backHome = document.getElementById('back-home');
 
+  // Clicking the overlay fades it out
   overlay.addEventListener('click', () => {
     overlay.style.opacity = '0';
     overlay.style.pointerEvents = 'none';
     setTimeout(() => {
       overlay.style.display = 'none';
     }, 800);
+  });
+
+  // Clicking the back button triggers transition back to homepage
+  backHome.addEventListener('click', e => {
+    e.preventDefault();
+    overlay.textContent = 'Switching channel...';
+    overlay.style.display = 'flex';
+    overlay.style.pointerEvents = 'auto';
+    overlay.style.opacity = '1';
+    setTimeout(() => {
+      window.location.href = 'index.html';
+    }, 1000);
   });
 </script>
 
