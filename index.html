@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>jc's archive</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      background: linear-gradient(to bottom, #0a0a0a, #121212);
+      color: #c0ff00;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    header {
+      text-align: center;
+      padding: 60px 20px 10px;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      color: #c0ff00;
+      margin: 0;
+    }
+
+    header p {
+      color: #c0ff00;
+      font-size: 1rem;
+      margin-top: 10px;
+      margin-bottom: 0;
+    }
+
+    header .arrow {
+      font-size: 1.5rem;
+      margin-top: 5px;
+      color: #ffffff;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      padding: 20px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #f0f0f0;
+      border: 2px solid #c0ff00;
+      padding: 10px 20px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      position: relative;
+      animation: border-glow 2s infinite alternate;
+      cursor: pointer;
+    }
+
+    nav a:hover {
+      background-color: #c0ff00;
+      color: #0a0a0a;
+      box-shadow: 0 0 12px #c0ff00;
+    }
+
+    @keyframes border-glow {
+      0% {
+        box-shadow: 0 0 4px #c0ff00;
+      }
+      100% {
+        box-shadow: 0 0 12px #c0ff00;
+      }
+    }
+
+    .status-box {
+      position: sticky;
+      top: 0;
+      left: 10px;
+      color: #c0ff00;
+      font-size: 0.9rem;
+      border: 1px solid #c0ff00;
+      padding: 5px 10px;
+      border-radius: 6px;
+      background-color: rgba(0, 0, 0, 0.7);
+      font-family: 'Orbitron', sans-serif;
+      width: max-content;
+      margin: 10px;
+      z-index: 1000;
+    }
+
+    .now-playing-box {
+      margin: 30px auto 10px;
+      max-width: 340px;
+      padding: 15px;
+      border: 2px solid #c0ff00;
+      border-radius: 10px;
+      background-color: rgba(0, 0, 0, 0.6);
+      text-align: center;
+      animation: border-glow 2s infinite alternate;
+      color: #c0ff00;
+      font-size: 1rem;
+    }
+
+    .now-playing-box h3 {
+      margin-top: 0;
+      margin-bottom: 8px;
+    }
+
+    .lastfm-box {
+      margin: 0 auto 30px;
+      max-width: 340px;
+      padding: 15px;
+      border: 2px solid #c0ff00;
+      border-radius: 10px;
+      background-color: rgba(0, 0, 0, 0.6);
+      text-align: center;
+      animation: border-glow 2s infinite alternate;
+    }
+
+    .lastfm-box h3 {
+      color: #c0ff00;
+      margin-top: 0;
+      margin-bottom: 8px;
+      font-size: 1rem;
+    }
+
+    .lastfm-box img {
+      width: 100%;
+      height: auto;
+      border: none;
+      user-select: none;
+    }
+
+    #intro-screen {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: #000;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-family: 'Orbitron', sans-serif;
+      color: #c0ff00;
+      font-size: 1.5rem;
+      transition: opacity 1s ease;
+    }
+
+    .intro-content {
+      animation: blink 1.2s infinite alternate;
+    }
+
+    @keyframes blink {
+      from { opacity: 1; }
+      to { opacity: 0.4; }
+    }
+
+    /* Transition overlay for switching channel */
+    #switching-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: black;
+      color: #c0ff00;
+      font-family: 'Orbitron', monospace;
+      font-size: 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      opacity: 0;
+      pointer-events: none;
+      user-select: none;
+      text-shadow:
+        0 0 5px #c0ff00,
+        0 0 10px #c0ff00,
+        0 0 20px #c0ff00;
+      transition: opacity 0.5s ease;
+    }
+  </style>
+</head>
+<body>
+  <!-- Intro screen -->
+  <div id="intro-screen">
+    <div class="intro-content">[ Click for access... ]</div>
+  </div>
+
+  <!-- Background audio -->
+  <audio id="bg-audio" loop>
+    <source src="https://files.catbox.moe/77r1sq.mp3" type="audio/mpeg" />
+  </audio>
+
+  <div class="status-box">[ user is online. ]</div>
+
+  <header>
+    <h1>jc's archive</h1>
+    <p>(－_－) zzZ</p>
+    <p>welcome to my homepage, choose your file...</p>
+    <div class="arrow">↓</div>
+  </header>
+
+  <nav>
+    <a href="about.html" id="about-link">about me</a>
+    <a href="#music">music</a>
+    <a href="#movies">movies</a>
+    <a href="#fashion">fashion</a>
+    <a href="#books">books</a>
+    <a href="#sports">sports</a>
+  </nav>
+
+  <div class="now-playing-box">
+    <h3>now playing:</h3>
+    <p>Dark and Long (Dark Train) - Underworld</p>
+  </div>
+
+  <div class="lastfm-box">
+    <h3>what i'm listening to</h3>
+    <h4>(っ˘ڡ˘ς)</h4>
+    <img src="https://lastfm-recently-played.vercel.app/api?user=jc428fm&width=300&height=80&cover=true&noScrobbleMessage=Nothing%20playing..." alt="Last.fm recent track" />
+  </div>
+
+  <div id="switching-overlay">Switching channel...</div>
+
+  <script>
+    const intro = document.getElementById('intro-screen');
+    const audio = document.getElementById('bg-audio');
+    const overlay = document.getElementById('switching-overlay');
+    const aboutLink = document.getElementById('about-link');
+
+    intro.addEventListener('click', () => {
+      audio.play().catch(e => console.log("Audio play blocked:", e));
+      intro.style.opacity = 0;
+      setTimeout(() => intro.style.display = 'none', 1000);
+    });
+
+    aboutLink.addEventListener('click', e => {
+      e.preventDefault(); // Prevent immediate navigation
+      overlay.style.pointerEvents = 'auto';
+      overlay.style.opacity = '1';
+      setTimeout(() => {
+        window.location.href = 'about.html'; // Navigate after transition
+      }, 1000);
+    });
+  </script>
+</body>
+</html>
