@@ -12,31 +12,26 @@
       color: #c0ff00;
       font-family: 'Orbitron', sans-serif;
     }
-
     header {
       text-align: center;
       padding: 60px 20px 10px;
     }
-
     header h1 {
       font-size: 3rem;
       color: #c0ff00;
       margin: 0;
     }
-
     header p {
       color: #c0ff00;
       font-size: 1rem;
       margin-top: 10px;
       margin-bottom: 0;
     }
-
     header .arrow {
       font-size: 1.5rem;
       margin-top: 5px;
       color: #ffffff;
     }
-
     nav {
       display: flex;
       justify-content: center;
@@ -44,7 +39,6 @@
       gap: 15px;
       padding: 20px;
     }
-
     nav a {
       text-decoration: none;
       color: #f0f0f0;
@@ -56,13 +50,11 @@
       animation: border-glow 2s infinite alternate;
       cursor: pointer;
     }
-
     nav a:hover {
       background-color: #c0ff00;
       color: #0a0a0a;
       box-shadow: 0 0 12px #c0ff00;
     }
-
     @keyframes border-glow {
       0% {
         box-shadow: 0 0 4px #c0ff00;
@@ -71,7 +63,6 @@
         box-shadow: 0 0 12px #c0ff00;
       }
     }
-
     .status-box {
       position: sticky;
       top: 0;
@@ -87,7 +78,6 @@
       margin: 10px;
       z-index: 1000;
     }
-
     .now-playing-box {
       margin: 30px auto 10px;
       max-width: 340px;
@@ -100,12 +90,10 @@
       color: #c0ff00;
       font-size: 1rem;
     }
-
     .now-playing-box h3 {
       margin-top: 0;
       margin-bottom: 8px;
     }
-
     .lastfm-box {
       margin: 0 auto 30px;
       max-width: 340px;
@@ -116,21 +104,18 @@
       text-align: center;
       animation: border-glow 2s infinite alternate;
     }
-
     .lastfm-box h3 {
       color: #c0ff00;
       margin-top: 0;
       margin-bottom: 8px;
       font-size: 1rem;
     }
-
     .lastfm-box img {
       width: 100%;
       height: auto;
       border: none;
       user-select: none;
     }
-
     #intro-screen {
       position: fixed;
       top: 0; left: 0;
@@ -146,16 +131,13 @@
       font-size: 1.5rem;
       transition: opacity 1s ease;
     }
-
     .intro-content {
       animation: blink 1.2s infinite alternate;
     }
-
     @keyframes blink {
       from { opacity: 1; }
       to { opacity: 0.4; }
     }
-
     /* Transition overlay for switching channel */
     #switching-overlay {
       position: fixed;
@@ -201,7 +183,7 @@
   </header>
 
   <nav>
-    <a href="about.html" id="about-link">about me</a>
+    <a href="#" id="about-link">about me</a>
     <a href="#music">music</a>
     <a href="#movies">movies</a>
     <a href="#fashion">fashion</a>
@@ -235,12 +217,13 @@
     });
 
     aboutLink.addEventListener('click', e => {
-      e.preventDefault(); // Prevent immediate navigation
+      e.preventDefault();
+      overlay.textContent = 'Switching channel...';
       overlay.style.pointerEvents = 'auto';
       overlay.style.opacity = '1';
       setTimeout(() => {
-        window.location.href = 'about.html'; // Navigate after transition
-      }, 1000);
+        window.location.href = 'about.html';
+      }, 1000); // 1 second fade before navigating
     });
   </script>
 </body>
